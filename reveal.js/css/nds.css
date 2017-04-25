@@ -1,0 +1,14 @@
+.emph-word {
+    color: #3a87ad;
+    font-weight: bold;
+}
+
+.logo {
+    position: absolute;
+    bottom: 0;
+    max-width: 500px;
+    text-align: center;
+    margin-left: 100%;
+    margin-right: auto;
+    display: block;
+}

@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+
+        <head>
+                <meta charset="utf-8">
+
+                <title>NDS 2017 - PushToCompute&trade; Workshop</title>
+
+                <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+                <meta name="author" content="Stephen Fox">
+
+                <meta name="apple-mobile-web-app-capable" content="yes">
+                <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+                <link rel="stylesheet" href="css/reveal.css">
+                <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+                <!-- Theme used for syntax highlighting of code -->
+                <link rel="stylesheet" href="lib/css/zenburn.css">
+                <link rel="stylesheet" href="css/nds.css">
+
+                <!-- Printing and PDF exports -->
+                <script>
+                        var link = document.createElement( 'link' );
+                        link.rel = 'stylesheet';
+                        link.type = 'text/css';
+                        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                        document.getElementsByTagName( 'head' )[0].appendChild( link );
+                </script>
+
+                <!--[if lt IE 9]>
+                <script src="lib/js/html5shiv.js"></script>
+                <![endif]-->
+        </head>
+
+        <body>
+
+                <div class="reveal">
+                  <div class="logo">
+                    <img src="images/NIMBIX-large.png" />
+                  </div>
+
+                        <!-- Any section element inside of this container is displayed as a slide -->
+                        <div class="slides">
+                                <section>
+                                        <h3>Productionalizing Cloud Workflows at Scale with PushToCompute&trade;</h3>
+                                        <p>
+                                                <small>Stephen Fox, Solutions Architect @ Nimbix</small>
+                                        </p>
+                                </section>
+                                <section>
+                                  <h3>Serverless Workflows</h3>
+                                  <p>Allow users to consume applications in an opinionated way without provisioning servers.</p>
+                                </section>
+
+                                <section>
+                                  <h3>PushToCompute&trade;</h3>
+                                  <p>Enable developers to deploy applications as opinionated workflows for those users.</p>
+                                </section>
+
+                                <section>
+                                  <h3>Benefits of PushToCompute&trade;</h3>
+                                  <ul>
+                                    <li>Turn-key CI/CD Service</li>
+                                    <li>Maintain developer velocity</li>
+                                    <li>Ship complete environments, not just an installer</li>
+                                    <li>Reduce support overhead for software vendors</li>
+                                    <li>Declarative application versioning</li>
+                                  </ul>
+                                </section>
+                                <section>
+                                  <h3>What is PushToCompute&trade;?</h3>
+                                  Package, deploy and release on JARVICE.
+                                  <ol>
+                                    <li><span class="emph-word">PACKAGE</span> your application environment (OS + Config) using Docker, Git and JSON AppDef</li>
+                                    <li><span class="emph-word">DEPLOY</span> opinionated workflows using Docker and the PushToCompute&trade; Build Service</li>
+                                    <li><span class="emph-word">RELEASE</span> cloud applications to the app catalog, and optionally monetize your apps.
+                                  </ol>
+                                </section>
+
+                                <section>
+                                  <h2>PushToCompute&trade;</h2>
+                                  <img src="images/p2c-tree.png" />
+                                </section>
+
+                                <section>
+                                  <h2>What is a Workflow?</h2>
+                                  <p>
+                                    A workflow is a combination of:
+                                    <ol>
+                                      <li>an application (OS + environment + application binaries)</li>
+                                      <li>its action</li>
+                                      <li>the hardware it runs on</li>
+                                      <li>input data</li>
+                                      <li>output data</li>
+                                    </ol>
+                                  </p>
+                                </section>
+
+                                <section>
+                                  <h2>Examples of Workflows</h2>
+                                  <p>
+                                    <img src="images/app-catalog.png" />
+                                  </p>
+                                </section>
+
+                                <section>
+                                  <h2>Examples of Workflows</h2>
+                                  <p>
+                                    <ul>
+                                      <li>Launch a cluster of NVIDIA P100s and run Kinetica's real-time analytics GPU DB.</li>
+                                      <li>Launch NVIDIA DIGITS web application on an NVIDIA DGX-1.</li>
+                                    </ul>
+                                  </p>
+                                </section>
+
+                                <section>
+                                  <h2>Examples of Workflows</h2>
+                                  <p>
+                                    <ul>
+                                      <li>Configure a model for a parameterized aerodynamics simulation.</li>
+                                      <li>Run a computational fluid dynamics simulation in batch mode on a cluster.</li>
+                                    </ul>
+                                  </p>
+                                </section>
+
+                                <section>
+                                  <h2>Examples of Workflows</h2>
+                                      <ul>
+                                        <li>Run an algorithm in MATLAB with a GPU for a few hours</li>
+                                        <li>Run MATLAB with minimal hardware requirements to review results.</li>
+                                      </ul>
+                                </section>
+
+                                <section>
+                                  <h2>Examples of Workflows</h2>
+                                  <ul>
+                                    <li>Train a Deep Learning model using 20 GB of training input data.</li>
+                                    <li>Train a Deep Learning model using 500 GB of training input data using a newly-released GPU type.</li>
+                                    <li>Run an MPI-based application appropriately sized for their input data set.</li>
+                                  </ul>
+                                  </p>
+                                </section>
+
+                                <section>
+                                  <h2>Common Workflow Architectures</h2>
+                                  <ul>
+                                    <li><span class="emph-word">BATCH</span> Run a single, parameterized command, and exit</li>
+                                    <li><span class="emph-word">DESKTOP INTERACTIVE</span> Run an application in a remote desktop</li>
+                                    <li><span class="emph-word">WEB INTERACTIVE</span> Run a single-tenant web application</li>
+                                    <li><span class="emph-word">DEVELOPER ENVIRONMENT</span> Launch a configured server with SSH access</li>
+                                    <li><span class="emph-word">SERVICE</span> Start a web service and run indefinitely</li>
+                                  </ul>
+                                </section>
+                                <section>
+                                  <h1>Tutorial</h1>
+                                </section>
+                                <section data-markdown>
+### Tutorial
+
+Objective: Build a workflow with two commands:
+
+ 1. A batch endpoint to "stylize" an image using https://github.com/jcjohnson/neural-style
+ 1. A Desktop GUI application that displays the image.
+
+![jarvice](images/jarvice-side-by-side.png)
+
+                                </section>
+
+                                <section data-markdown>
+### Prerequisites
+   In order to follow along in this tutorial, you'll need accounts on the following services:
+ 1. [JARVICE](https://mc.jarvice.com)
+ 1. [DockerHub](http://dockerhub.com)
+ 1. [Github](http://www.github.com)
+
+Fork the Github repo at [https://github.com/nimbix/nds17](https://github.com/nimbix/nds17)
+                                </section>
+
+                                <section>
+                                  <h2>Step 1: "Hello, JARVICE"</h2>
+                                  We pull an image from DockerHub and run it on JARVICE with the default AppDef.
+                                </section>
+                                <section>
+                                  <h3>Step 1: "Hello, JARVICE"</h3>
+                                  <h4>Pull the Docker Image</h4>
+                                  <ol>
+                                    <li>Log in to the Material Compute interface at https://mc.jarvice.com</li>
+                                    <li>In the PushToCompute section, select "New" to create a new PushToCompute App</li>
+                                    <li>Docker Registry: <span class="emph-word">nimbix/ubuntu-desktop:trusty</span></li>
+                                    <li>Monitor the status of the pull in the History Window</li>
+                                  </ol>
+                                </section>
+                                <section data-markdown>
+                                  ### Step 1: "Hello, JARVICE"
+                                  #### Run Some Commands
+                                  5. Click the app card and select "batch".
+                                  6. Enter `echo "hello, jarvice"` and select the n0 machine.
+                                  7. Try running other commands:
+                                    * `cat /etc/JARVICE/cores`
+                                    * `cat /etc/JARVICE/nodes`
+                                    * `cat /etc/JARVICE/jobinfo.sh`
+                                  8. (Exercise) Try running "Server" and connecting to the Nimbix desktop interactively.
+                                </section>
+
+                                <section>
+                                  <h2>Step 2: Build an application from an app repository on Github</h2>
+                                  <a href="https://github.com/nimbix/nds17" data-preview-link>https://github.com/nimbix/nds17</a>
+
+                                  <p>
+                                  <b>Note</b> If you would like to follow along by editing the repository, please fork this repository now.
+                                  </p>
+                                </section>
+
+
+
+                                <section>
+                                  <h3>Step 2: Build an application from an app repository on Github</h3>
+                                  <ol>
+                                    <li>In PushToCompute, connect a DockerHub account.</li>
+                                    <li>Create a new app:</li>
+                                    <ul>
+                                      <li><span class="emph-word">Docker Repository</span> YourDockerHubUserName/nds17</li>
+                                      <li><span class="emph-word">Git Source URL</span> <br/>git@github.com:nimbix/nds17.git</li>
+                                    </ul>
+                                  </ol>
+                                </section>
+
+                                <section data-markdown>
+                                  ### Step 2: Build an application from an app repository on Github
+                                  #### Build with the PushToCompute Build Service
+ 1. From the app card, select "build and pull"
+ 1. Check the commands. These are defined in /etc/NAE/AppDef.json.
+ 1. The custom image is defined in /etc/NAE/screenshot.png
+
+Check the [Dockerfile](https://github.com/nimbix/nds17/blob/master/Dockerfile) and [AppDef](https://github.com/nimbix/nds17/blob/master/NAE/AppDef.json)
+
+*Note*:  This is like running `docker build`
+                                </section>
+                                <section data-markdown>
+### Step 3: Customize your Dockerfile
+
+Nimbix has many base images. `docker search nimbix`
+
+Common base images include:
+ * nimbix/ubuntu-desktop
+ * nimbix/base-ubuntu-nvidia (NVIDIA CUDA base images with Nimbix extras)
+ * nimbix-ubuntu-base
+ * nimbix/centos-desktop
+ * nimbix/centos-base
+                                </section>
+
+                                <section data-markdown>
+                                  We've built a special base image for today's workshop: `jarvice/base-nds17`
+
+                                  ```FROM jarvice/base-nds17```
+
+                                  * [Torch](http://torch.ch/) is a library that is popular for scientific computing and deep learning. We have built a special Torch base image that is pre-configured for use on NIMBIX with GPU-capable Torch.
+                                  * [jcjohnson/neural-style](Neural Style) An implementation of image stylization in Torch. It is open source at <a href="https://github.com/jcjohnson/neural-style">https://github.com/jcjohnson/neural-style</a>
+
+                                </section>
+
+
+                                <section data-markdown>
+                                  [Dockerfile](https://github.com/nimbix/nds17/blob/master/Dockerfile)
+
+                                  ```bash
+FROM jarvice/base-nds17
+
+RUN apt-get update && \
+    apt-get install -y pinta curl && \
+    apt-get clean
+
+COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
+
+RUN curl --fail -X POST \
+    "https://api.jarvice.com/jarvice/validate" \
+    -d@/etc/NAE/AppDef.json
+
+COPY ./NAE/screenshot.png /etc/NAE/screenshot.png
+COPY ./scripts/stylize.sh /usr/local/scripts/stylize.sh
+```
+                                </section>
+
+                                <section data-markdown>
+                                  ### Step 4: Define the application workflows
+
+                                  We want to be able to run the following command:
+
+                                  ```th neural_style.lua -style_image style.jpg -content_image content.jpg```
+                                </section>
+
+                                <section data-markdown>
+So, let's build an [AppDef](https://github.com/nimbix/nds17/blob/master/NAE/AppDef.json) that does this.
+
+```th neural_style.lua -style_image style.jpg -content_image content.jpg```
+
+```javascript
+
+        "stylize": {
+            "path": "/usr/local/scripts/stylize.sh",
+            "interactive": false,
+            "name": "Stylize an Image",
+            "description": "Style an image using TORCH-based Neural Style",
+            "parameters": {
+                "-style_image": {
+                    "type": "FILE",
+                    "required": true,
+                    "name": "Style image",
+                    "description": "The image to base the new style on",
+                    "filter": "*.png|*.jpg"
+                },
+                "-content_image": {
+                    "type": "FILE",
+                    "required": true,
+                    "name": "Content image",
+                    "description": "The image that will be stylized",
+                    "filter": "*.png|*.jpg"
+                }
+            },
+            "machines": [
+                "ng*"
+            ]
+        }
+
+```
+
+COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
+                                </section>
+                                <section data-markdown>
+                                  [Dockerfile](https://github.com/nimbix/nds17/blob/master/Dockerfile)
+
+                                  ```bash
+FROM jarvice/base-nds17
+
+RUN apt-get update && \
+    apt-get install -y pinta curl && \
+    apt-get clean
+
+COPY ./NAE/AppDef.json /etc/NAE/AppDef.json
+
+RUN curl --fail -X POST \
+    "https://api.jarvice.com/jarvice/validate" \
+     -d@/etc/NAE/AppDef.json
+
+COPY ./NAE/screenshot.png /etc/NAE/screenshot.png
+COPY ./scripts/stylize.sh /usr/local/scripts/stylize.sh
+```
+                                </section>
+
+                                <section data-markdown>
+```bash
+#!/bin/bash
+# NDS17 PushToCompute Workshop
+
+. /usr/local/torch/install/bin/torch-activate
+
+cd /usr/local/neural-style/neural-style
+
+th neural_style.lua -backend cudnn -output_image /data/stylized.png $@
+```
+COPY ./scripts/stylize.sh /usr/local/scripts/stylize.sh
+
+                                </section>
+                                <section>
+                                  <p>
+                                  If you forked the Github repository, push your changes and rebuild
+                                  <pre>git push origin master</pre>
+                                  </p>
+                                  <p>
+                                  Then go back to https://mc.jarvice.com to build and pull
+                                  </p>
+                                </section>
+
+                                <section data-markdown>
+                                  ### Step 5: A Better Workflow
+
+```javascript
+
+        "stylize": {
+            "path": "/usr/local/scripts/stylize.sh",
+            "interactive": false,
+            "name": "Stylize an Image",
+            "description": "Style an image using TORCH-based Neural Style",
+            "parameters": {
+                "-style_image": {
+                    "type": "SELECTION",
+                    "required": true,
+                    "name": "Style image",
+                    "description": "The image to base the new style on",
+                    "values": [
+                      "Starry Night",
+                      "Picasso",
+                      "8-bit JARVICE"
+                    ],
+                    "mvalues": [
+                      "/usr/local/styles/starrynight.png",
+                      "/usr/local/styles/picasso.png",
+                      "/usr/local/styles/jarvice.png"
+                    ],
+                },
+                "-content_image": {
+                    "type": "FILE",
+                    "required": true,
+                    "name": "Content image",
+                    "description": "The image that will be stylized",
+                    "filter": "*.png|*.jpg"
+                }
+            },
+            "machines": [
+                "ng4",
+                "ng5",
+                "ngd4",
+                "ngd5"
+            ]
+        }
+```
+                                </section>
+
+                                <section data-markdown>
+                                  ### Step 6: Releasing on JARVICE
+
+Ensure that your application has all of the proper metadata set:
+
+* /etc/NAE/AppDef.json
+* /etc/NAE/screenshot.png
+* /etc/NAE/help.html
+* Categories are set in the AppDef
+                                </section>
+                                <section data-markdown>
+                                  ### Step 6: Releasing on JARVICE
+
+#### Monetization Options
+
+ * Pass-through license uplift cost = money in your pocket proportional to utilization
+ * Applies proportionally to the number of total CPU cores
+
+                                </section>
+
+                                <section data-markdown>
+                                  ### Step 6: Releasing on JARVICE
+
+#### Community Apps vs Certified Apps
+
+ * Certified Apps: Nimbix provides first-line support for Certified applications. This requires a business agreement, test cases to verify the application's exisiting workflows and information on how to use the application.
+ * Community Apps: Community apps are apps for which support is provided by the application owner.
+                                </section>
+
+                                <section data-markdown>
+#### Best Practices and Examples
+
+See examples at [Nimbix GitHub space](https://github.com/nimbix)
+
+ * Remote visualization application: [ParaView](https://github.com/nimbix/app-paraview)
+ * Batch and interactive processing: [Canu Pipeline](https://github.com/nimbix/app-canupipeline)
+ * Ephemeral developer environment: [PowerAI](https://github.com/nimbix/powerai)
+ * Web service application: [DIGITS](https://github.com/nimbix/app-digits)
+                                </section>
+
+                                <section style="text-align: left;">
+                                        <h1>USEFUL LINKS</h1>
+                                        <ul>
+                                          <li><a href="https://github.com/nimbix/nds17">Github Tutorial</a></li>
+                                          <li><a href="https://mc.jarvice.com">JARVICE Portal - Material Compute</a></li>
+                                          <li><a href="https://www.nimbix.net/pushtocompute-work-flow-deployment-guide/">PushToCompute Workflow Deployment Guide</a></li>
+                                          <li><a href="http://jarvice.readthedocs.io/en/latest/public/">PushToCompute Docs</a></li>
+                                        </ul>
+                                </section>
+
+                        </div>
+
+                </div>
+
+                <script src="lib/js/head.min.js"></script>
+                <script src="js/reveal.js"></script>
+
+                <script>
+
+                        // More info https://github.com/hakimel/reveal.js#configuration
+                        Reveal.initialize({
+                                controls: true,
+                                progress: true,
+                                history: true,
+                                center: true,
+
+                                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                                // More info https://github.com/hakimel/reveal.js#dependencies
+                                dependencies: [
+                                        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                                        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                                        { src: 'plugin/zoom-js/zoom.js', async: true },
+                                        { src: 'plugin/notes/notes.js', async: true }
+                                ]
+                        });
+
+                </script>
+
+        </body>
+</html>
